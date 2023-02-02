@@ -1,8 +1,6 @@
 
 
-
-/target/
-/.idea/
-/HELP.md
-/mvnw
+/target
+/.idea
 /mvnw.cmd
+/mvnw
