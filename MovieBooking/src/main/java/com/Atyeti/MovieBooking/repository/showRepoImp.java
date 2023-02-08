@@ -1,10 +1,11 @@
 package com.Atyeti.MovieBooking.repository;
 
 import com.Atyeti.MovieBooking.model.Show;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-
+@Component
 public class showRepoImp implements ShowRepo{
     Map<String,Show> showMap;
 

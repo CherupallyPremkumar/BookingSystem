@@ -1,17 +1,20 @@
 package com.Atyeti.MovieBooking.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@ToString
-@Data
+
+@Getter
+@Setter
 public class Screen {
     private String screenID;
-    final private String screenName;
+     private String screenName;
     private Multiplex multiplex;
      private List<Seat> seats;
 
@@ -19,6 +22,7 @@ public class Screen {
         this.screenID = screenID;
         this.screenName = screenName;
         this.multiplex = multiplex;
+        this.seats=new ArrayList<>();
     }
     public void addSeats(Seat seat) {
         this.seats.add(seat);
@@ -28,4 +32,6 @@ public class Screen {
     {
         return seats;
     }
+
+
 }

@@ -15,27 +15,26 @@ import java.util.UUID;
 
 @Service
 public class MultiplexService {
-
-    @Autowired
+@Autowired
     MultiplexRepo multiplexRepo;
-    @Autowired
+@Autowired
     ScreenRepo screenRepo;
-    @Autowired
+@Autowired
     SeatsRepo seatsRepo;
 
     public Multiplex createmultiplex(@NonNull String multiplexName) {
         String multiplexId = UUID.randomUUID().toString();
         Multiplex multiplex = new Multiplex(multiplexId, multiplexName);
-        multiplexRepo.createMultiplex(multiplexId, multiplexName, multiplex);
+        System.out.println(multiplex.getMultiplexId()+""+multiplex.getMultiplxName());
+            multiplexRepo.createMultiplex(multiplexId, multiplexName, multiplex);
+
         return multiplex;
     }
 
-    public Multiplex getMultiplex(@NonNull String multiplexId) {
+
+
+
+    public Multiplex getmultiplex(@NonNull String multiplexId) {
         return multiplexRepo.getMultiplex(multiplexId);
     }
-
-
-
-
-
 }

@@ -2,11 +2,12 @@ package com.Atyeti.MovieBooking.repository;
 
 import com.Atyeti.MovieBooking.model.Multiplex;
 import com.Atyeti.MovieBooking.model.Screen;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-
+@Component
 public class ScreenRepoIMple implements ScreenRepo{
     Map<String ,Screen> screenMap;
 

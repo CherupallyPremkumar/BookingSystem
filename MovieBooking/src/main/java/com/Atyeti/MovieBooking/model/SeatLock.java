@@ -1,16 +1,17 @@
 package com.Atyeti.MovieBooking.model;
 
+import lombok.ToString;
+
 import java.time.Instant;
 import java.util.Date;
-
 public class SeatLock {
     private Seat seat;
     private Show show;
-    private Integer timeoutInSeconds;
+    private boolean timeoutInSeconds;
     private Date lockTime;
     private String lockedBy;
 
-    public SeatLock(Seat seat, Show show, Integer timeoutInSeconds, Date lockTime, String lockedBy) {
+    public SeatLock(Seat seat, Show show, boolean timeoutInSeconds, Date lockTime, String lockedBy) {
         this.seat = seat;
         this.show = show;
         this.timeoutInSeconds = timeoutInSeconds;
@@ -21,8 +22,6 @@ public class SeatLock {
 
     public boolean isLockExpired()
     {
-        Instant lock=lockTime.toInstant().plusSeconds(timeoutInSeconds);
-        Instant currentInstant=new Date().toInstant();
-        return lock.isBefore(currentInstant);
+        return timeoutInSeconds;
     }
 }
