@@ -19,9 +19,6 @@ public class MovieBookingApplication {
 
 	public static void main(String[] args) {
 		BeanFactory context=SpringApplication.run(MovieBookingApplication.class, args);
-		MovieServie m=context.getBean(MovieServie.class);
- Movie mm=m.createMovie("RRR");
-		System.out.println(mm.getMovieId());
 	}
 
 

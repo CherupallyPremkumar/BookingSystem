@@ -14,14 +14,16 @@ import java.util.List;
 @Setter
 public class Screen {
     private String screenID;
-     private String screenName;
+    private String screenName;
     private Multiplex multiplex;
-     private List<Seat> seats;
+    private String screenType;
+    private List<Seat> seats;
 
-    public Screen(String screenID, String screenName, Multiplex multiplex) {
+    public Screen(String screenID, String screenName, Multiplex multiplex ,String screenType) {
         this.screenID = screenID;
         this.screenName = screenName;
         this.multiplex = multiplex;
+        this.screenType=screenType;
         this.seats=new ArrayList<>();
     }
     public void addSeats(Seat seat) {

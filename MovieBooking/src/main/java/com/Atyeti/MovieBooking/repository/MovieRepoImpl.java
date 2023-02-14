@@ -4,16 +4,17 @@ import com.Atyeti.MovieBooking.model.Movie;
 import com.Atyeti.MovieBooking.model.Screen;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
 @Component
 public class MovieRepoImpl implements MovieRepo{
 
-    final Map<String,Movie> movieMap;
+     Map<String,Movie> movieMap =new HashMap<>();
 
-    public MovieRepoImpl(Map<String,Movie> movieMap) {
-        this.movieMap = new HashMap<>();
-    }
+
 
     @Override
     public void createMovie(String movieId,Movie movie) {
@@ -27,5 +28,16 @@ public class MovieRepoImpl implements MovieRepo{
             throw new NullPointerException("movie is not present");
         }
        return movieMap.get(movieId);
+    }
+
+    @Override
+    public List<Movie> getAllMovie() {
+        List<Movie> movies=new ArrayList<>();
+
+        for (Movie m : movieMap.values()) {
+            movies.add(m);
+        }
+        System.out.println(movies.size());
+        return movies;
     }
 }

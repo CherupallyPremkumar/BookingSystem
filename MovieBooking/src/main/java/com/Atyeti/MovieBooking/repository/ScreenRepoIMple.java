@@ -16,8 +16,8 @@ public class ScreenRepoIMple implements ScreenRepo{
     }
 
     @Override
-    public Screen createScreen(String screenId,String screenName, Multiplex multiplex) {
-        Screen screen=new Screen(screenId,screenName,multiplex);
+    public Screen createScreen(String screenId,String screenName, Multiplex multiplex, String screenType) {
+        Screen screen=new Screen(screenId,screenName,multiplex ,screenType);
         screenMap.put(screenId,screen);
         return screen;
     }

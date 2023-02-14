@@ -19,12 +19,10 @@ public class ScreenService {
 @Autowired
 MultiplexService multiplexService;
 
-    public Screen addScreensInMultiplexx(@NonNull String multiplexId, @NonNull String screenName) {
+    public Screen addScreensInMultiplexx(@NonNull String multiplexId,Screen screen) {
         String screenId = UUID.randomUUID().toString();
-        System.out.println(multiplexId);
+
         Multiplex multiplex1=multiplexService.getmultiplex(multiplexId);
-        System.out.println(multiplexId);
-        Screen screen = screenRepo.createScreen(screenId, screenName, multiplex1);
             multiplex1.addScreens(screen);
             return screen;
 

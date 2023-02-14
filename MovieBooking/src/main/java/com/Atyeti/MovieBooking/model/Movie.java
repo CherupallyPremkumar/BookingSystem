@@ -9,11 +9,9 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
-
 public class Movie {
 
     private String movieId;
-
     private String movieName;
 
 

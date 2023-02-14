@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 @Service
 public class MovieServie {
@@ -26,5 +27,9 @@ public class MovieServie {
     public MovieRepo getMovieRepo()
     {
         return movieRepo;
+    }
+
+    public List<Movie> getAllMovie() {
+        return movieRepo.getAllMovie();
     }
 }
