@@ -1,12 +1,14 @@
 package com.Atyeti.MovieBooking.model;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import javax.xml.crypto.Data;
 import java.util.Date;
 import java.util.List;
 
 @Getter
+
 public class Show {
     private final String showId;
     private final Movie movie;
@@ -22,13 +24,5 @@ public class Show {
         this.startTime = startTime;
         this.durationInseconds = durationInseconds;
     }
-
-    @Override
-    public String toString() {
-        return "Show{" +
-                "movie=" + movie +
-                '}';
-    }
-
 
 }

@@ -5,26 +5,28 @@ import com.Atyeti.MovieBooking.model.Movie;
 import com.Atyeti.MovieBooking.model.Screen;
 import com.Atyeti.MovieBooking.model.Seat;
 import com.Atyeti.MovieBooking.model.Show;
-import com.Atyeti.MovieBooking.repository.MultiplexRepo;
-import com.Atyeti.MovieBooking.repository.ScreenRepo;
-import com.Atyeti.MovieBooking.repository.SeatsRepo;
-import com.Atyeti.MovieBooking.repository.ShowRepo;
+import com.Atyeti.MovieBooking.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import javax.swing.tree.RowMapper;
 import java.io.File;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
+@Service
 public class ShowService {
 
     @Autowired
     ScreenService screenService;
     @Autowired
     MovieServie movieServie;
-    @Autowired
+@Autowired
     ShowRepo showRepo;
+
 
 
     public Show createShow(String movieId, String screenId, Date startTime, Integer durationInseconds) {
@@ -66,4 +68,11 @@ public class ShowService {
         }
         return show;
     }
+
+
+  /*  public List<Seat> getAvailableSeats(String showId)
+    {
+        return seatAvailabilityService.getAvialableSeats(showId);
+    }*/
+
 }

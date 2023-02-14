@@ -6,29 +6,45 @@ import com.Atyeti.MovieBooking.model.Seat;
 import com.Atyeti.MovieBooking.sevice.MultiplexService;
 import com.Atyeti.MovieBooking.sevice.ScreenService;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 
 @RestController
+@CrossOrigin("*")
+@Slf4j
 public class MultiplexController {
     @Autowired
     private MultiplexService multiplexService;
     @Autowired
     public ScreenService screenService;
-
-    public String createMultiplex(@NonNull String multiplexName) {
-        return multiplexService.createmultiplex(multiplexName).getMultiplexId();
+     @PostMapping("/createMultiplex")
+    public Map<String,String> createMultiplex(@NonNull @RequestBody Multiplex multiplex) {
+        return multiplexService.createmultiplex(multiplex);
     }
+    @GetMapping("/getmultiplex{multiplexId}")
+    public Multiplex getMultiplex(@NonNull @PathVariable String multiplexId) {
 
-    public Screen addScreensInMultiplex(@NonNull String multiplexId, @NonNull String screenName) {
-        final Multiplex multiplex = multiplexService.getMultiplex(multiplexId);
-        return screenService.addScreensInMultiplex(multiplex, screenName);
+        return multiplexService.getmultiplex(multiplexId);
     }
+    @GetMapping("/getAllmultiplex")
+    public List<Multiplex> getMultiplex() {
+        log.info("entered getAllMultiplex method");
+        return multiplexService.getAllmultiplex();
+    }
+    @PostMapping("/addScreen")
+    public Screen addScreensInMultiplex(@NonNull String multiplexID, @RequestBody Screen screen) {
 
-    public String createSeatInScreen(@NonNull Integer rowNo, @NonNull Integer seatNo, @NonNull String screenId)
+        return screenService.addScreensInMultiplexx(multiplexID,screen);
+    }
+  @PostMapping("/createSeat{rowNo}{seatNo}{screenId}")
+    public Seat createSeatInScreen(@NonNull Integer rowNo, @NonNull Integer seatNo, @NonNull String screenId)
     {
-        return screenService.createSeatInScreen(rowNo,seatNo,screenId).getSeatId();
+        return screenService.createSeatInScreen(rowNo,seatNo,screenId);
     }
 
 

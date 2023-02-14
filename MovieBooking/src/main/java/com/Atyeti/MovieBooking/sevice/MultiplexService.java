@@ -1,41 +1,53 @@
 package com.Atyeti.MovieBooking.sevice;
 
 import com.Atyeti.MovieBooking.model.Multiplex;
-import com.Atyeti.MovieBooking.model.Screen;
-import com.Atyeti.MovieBooking.model.Seat;
 import com.Atyeti.MovieBooking.repository.MultiplexRepo;
 import com.Atyeti.MovieBooking.repository.ScreenRepo;
 import com.Atyeti.MovieBooking.repository.SeatsRepo;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
+@Slf4j
 public class MultiplexService {
-
-    @Autowired
+@Autowired
     MultiplexRepo multiplexRepo;
-    @Autowired
+@Autowired
     ScreenRepo screenRepo;
-    @Autowired
+@Autowired
     SeatsRepo seatsRepo;
 
-    public Multiplex createmultiplex(@NonNull String multiplexName) {
+    public Map<String,String> createmultiplex(@NonNull Multiplex multiplex) {
+        Map<String ,String> response=new HashMap<>();
         String multiplexId = UUID.randomUUID().toString();
-        Multiplex multiplex = new Multiplex(multiplexId, multiplexName);
-        multiplexRepo.createMultiplex(multiplexId, multiplexName, multiplex);
-        return multiplex;
+        if(multiplex.getMultiplxName().equals("null"))
+        {
+            throw new NullPointerException();
+        }
+
+        multiplex.setMultiplexId(multiplexId);
+        multiplexRepo.createMultiplex(multiplexId, multiplex);
+        response.put("status","succesfull");
+          return response;
     }
 
-    public Multiplex getMultiplex(@NonNull String multiplexId) {
+
+
+
+    public Multiplex getmultiplex(@NonNull String multiplexId) {
         return multiplexRepo.getMultiplex(multiplexId);
     }
 
-
-
-
-
+    public List<Multiplex> getAllmultiplex() {
+        log.info("entered getAllMultiplex method");
+        return  multiplexRepo.getAllMultiplex();
+    }
 }

@@ -3,9 +3,12 @@ package com.Atyeti.MovieBooking.sevice;
 import com.Atyeti.MovieBooking.model.Movie;
 import com.Atyeti.MovieBooking.repository.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
-
+@Service
 public class MovieServie {
 
     @Autowired
@@ -20,5 +23,13 @@ public class MovieServie {
 
     public Movie getMovie(String movieId) {
         return movieRepo.getMovie(movieId);
+    }
+    public MovieRepo getMovieRepo()
+    {
+        return movieRepo;
+    }
+
+    public List<Movie> getAllMovie() {
+        return movieRepo.getAllMovie();
     }
 }

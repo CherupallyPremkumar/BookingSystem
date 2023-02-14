@@ -1,8 +1,10 @@
 package com.Atyeti.MovieBooking.model;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+
 public class Seat {
     String seatId;
     Integer rowNo;

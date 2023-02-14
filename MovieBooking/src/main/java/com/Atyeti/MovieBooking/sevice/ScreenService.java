@@ -7,25 +7,25 @@ import com.Atyeti.MovieBooking.repository.ScreenRepo;
 import com.Atyeti.MovieBooking.repository.SeatsRepo;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
-
+@Service
 public class ScreenService {
-
-    @Autowired
+@Autowired
     ScreenRepo screenRepo;
-     @Autowired
+@Autowired
     SeatsRepo seatsRepo;
+@Autowired
+MultiplexService multiplexService;
 
-    public Screen addScreensInMultiplex(@NonNull Multiplex multiplex, @NonNull String screenName) {
+    public Screen addScreensInMultiplexx(@NonNull String multiplexId,Screen screen) {
         String screenId = UUID.randomUUID().toString();
-        Screen screen = screenRepo.createScreen(screenId, screenName, multiplex);
-        if(screen ==null)
-            throw new NullPointerException();
-        else {
-            multiplex.addScreens(screen);
+
+        Multiplex multiplex1=multiplexService.getmultiplex(multiplexId);
+            multiplex1.addScreens(screen);
             return screen;
-        }
+
     }
     public Screen getScreen(String screenId)
     {
@@ -42,7 +42,6 @@ public class ScreenService {
     }
     public  Seat getSeat(String showId)
     {
-
         Seat seat= seatsRepo.getSeat(showId);
         if(seat==null)
         {

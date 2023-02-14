@@ -1,22 +1,24 @@
 package com.Atyeti.MovieBooking.model;
 
 import lombok.Getter;
-import lombok.ToString;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@ToString
+@Setter
 public class Multiplex {
-   private String multiplexId;
-    private final String multiplxName;
+   private  String multiplexId;
+    private  String multiplxName;
+    private  String location;
 
-    private List<Screen> screens;
+    private final List<Screen> screens;
 
-    public Multiplex(String multiplexId,String multipleName) {
+    public Multiplex(String multiplexId, String multipleName, String location) {
         this.multiplexId=multiplexId;
         this.multiplxName = multipleName;
+        this.location = location;
         this.screens = new ArrayList<>();
     }
 
@@ -24,10 +26,5 @@ public class Multiplex {
         this.screens.add(screen);
     }
 
-    @Override
-    public String toString() {
-        return "Multiplex{" +
-                "screens=" + screens +
-                '}';
-    }
+
 }
