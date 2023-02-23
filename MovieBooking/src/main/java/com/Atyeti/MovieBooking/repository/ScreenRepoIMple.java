@@ -4,9 +4,8 @@ import com.Atyeti.MovieBooking.model.Multiplex;
 import com.Atyeti.MovieBooking.model.Screen;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
+
 @Component
 public class ScreenRepoIMple implements ScreenRepo{
     Map<String ,Screen> screenMap;
@@ -24,6 +23,7 @@ public class ScreenRepoIMple implements ScreenRepo{
 
     @Override
     public Screen getScreen(String screenId) {
-        return screenMap.get(screenId);
+
+       return screenMap.get(screenId);
     }
 }

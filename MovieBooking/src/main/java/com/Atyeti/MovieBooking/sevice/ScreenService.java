@@ -9,6 +9,9 @@ import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 @Service
 public class ScreenService {
@@ -19,17 +22,20 @@ public class ScreenService {
 @Autowired
 MultiplexService multiplexService;
 
-    public Screen addScreensInMultiplexx(@NonNull String multiplexId,Screen screen) {
+    public Map<String, String> addScreensInMultiplexx(@NonNull String multiplexId, Screen screen) {
+        Map<String, String> screenMap=new HashMap<>();
         String screenId = UUID.randomUUID().toString();
-
+        System.out.println("this is m"+multiplexId);
+        screen.setScreenID(screenId);
+        System.out.println(screen.toString());
         Multiplex multiplex1=multiplexService.getmultiplex(multiplexId);
             multiplex1.addScreens(screen);
-            return screen;
-
+             screenMap.put("status","succesfull");
+return  screenMap;
     }
-    public Screen getScreen(String screenId)
+    public Screen getScreen(String multiplexId)
     {
-        return screenRepo.getScreen(screenId);
+        return screenRepo.getScreen(multiplexId);
     }
 
     public Seat createSeatInScreen(@NonNull Integer rowNo, @NonNull Integer seatNo, @NonNull String screenId) {

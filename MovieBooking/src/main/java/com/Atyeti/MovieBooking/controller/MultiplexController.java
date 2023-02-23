@@ -36,8 +36,8 @@ public class MultiplexController {
         log.info("entered getAllMultiplex method");
         return multiplexService.getAllmultiplex();
     }
-    @PostMapping("/addScreen")
-    public Screen addScreensInMultiplex(@NonNull String multiplexID, @RequestBody Screen screen) {
+    @PostMapping("/addScreen{multiplexID}")
+    public Map<String, String> addScreensInMultiplex(@NonNull @PathVariable String multiplexID,@NonNull @RequestBody Screen screen) {
 
         return screenService.addScreensInMultiplexx(multiplexID,screen);
     }
@@ -46,6 +46,10 @@ public class MultiplexController {
     {
         return screenService.createSeatInScreen(rowNo,seatNo,screenId);
     }
-
+@GetMapping("/getScreen")
+    public  Screen getScreen(@NonNull String multiplexId)
+{
+  return screenService.getScreen(multiplexId);
+}
 
 }

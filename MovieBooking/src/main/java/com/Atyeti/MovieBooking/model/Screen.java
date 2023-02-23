@@ -36,4 +36,12 @@ public class Screen {
     }
 
 
+    @Override
+    public String toString() {
+        return "Screen{" +
+                "screenID='" + screenID + '\'' +
+                ", screenName='" + screenName + '\'' +
+                ", screenType='" + screenType + '\'' +
+                '}';
+    }
 }
